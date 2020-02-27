@@ -1,40 +1,32 @@
 <template>
   <div class="app-container">
-    <el-select v-model="value" placeholder="请选择" v-if="!li" >
-      <el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-      </el-option>
-    </el-select>
-    <el-input v-model="filename" placeholder="单位名称" style="width:300px;" prefix-icon="el-icon-document" />
+    <el-input v-model="filename" placeholder="值班人员" style="width:300px;" prefix-icon="el-icon-document" />
     <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="document" @click="handleDownload">
       搜索
     </el-button>
-    <!--<el-button :loading="downloadLoading" style="margin-bottom:20px;float: right;" type="primary" icon="el-icon-edit" @click="handleDownload">
+    <el-button :loading="downloadLoading" style="margin-bottom:20px;float: right;" type="primary" icon="el-icon-edit" @click="handleDownload">
       添加
-    </el-button>-->
+    </el-button>
     <el-table
       :data="tableData"
       style="width: 100%;">
       <el-table-column
         prop="name"
-        label="单位名称">
+        label="序号">
       </el-table-column>
       <el-table-column
         prop="type"
-        label="单位类型"
+        label="值班日期"
       >
       </el-table-column>
       <el-table-column
         prop="date"
-        label="成立日期"
+        label="值班人员"
       >
       </el-table-column>
       <el-table-column
         prop="user"
-        label="法人代表">
+        label="值班监督人员">
       </el-table-column>
       <el-table-column
         prop="phone"
@@ -42,15 +34,7 @@
       </el-table-column>
       <el-table-column
         prop="comname"
-        label="项目名称">
-      </el-table-column>
-      <el-table-column
-        prop="createDate"
-        label="项目时间">
-      </el-table-column>
-      <el-table-column
-        prop="complete"
-        label="完成情况">
+        label="所属范围">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -58,8 +42,8 @@
         width="150">
         <template slot-scope="scope">
           <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-          <el-button @click="handleUpdate(scope.row)" type="text" size="small">编辑</el-button>
-          <!--<el-button @click="handleDle(scope.row)" type="text" size="small">删除</el-button>-->
+          <!-- <el-button @click="handleUpdate(scope.row)" type="text" size="small">编辑</el-button> -->
+          <el-button @click="handleDle(scope.row)" type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>

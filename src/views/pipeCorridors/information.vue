@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-select v-model="value" placeholder="请选择分控中心" v-if="!li" >
+    <el-select v-model="value" placeholder="请选择分控中心" >
       <el-option
         v-for="item in options"
         :key="item.value"
@@ -20,64 +20,68 @@
       style="width: 100%;">
       <el-table-column type="expand">
         <template slot-scope="props">
-          <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="分区1">
-              <span></span>
-            </el-form-item>
-            <el-form-item label="所属店铺">
-              <span></span>
-            </el-form-item>
-            <el-form-item label="商品 ID">
-              <span>{{ props.row.id }}</span>
-            </el-form-item>
-            <el-form-item label="店铺 ID">
-              <span>{{ props.row.shopId }}</span>
-            </el-form-item>
-            <el-form-item label="商品分类">
-              <span>{{ props.row.category }}</span>
-            </el-form-item>
-            <el-form-item label="店铺地址">
-              <span>{{ props.row.address }}</span>
-            </el-form-item>
-            <el-form-item label="商品描述">
-              <span>{{ props.row.desc }}</span>
-            </el-form-item>
-          </el-form>
+          <el-row>
+            <el-col :span='2' >
+              <div class='disinl pl'>分区1</div> </el-col>
+            <el-col :span='17' >
+              <div>
+                <div class='disinl pr'>
+                  分区[1]水电信舱
+                </div>
+                 <el-button type="text" icon="el-icon-edit" ></el-button>
+                 <el-button type="text" icon="el-icon-delete" ></el-button>
+              </div>
+            </el-col>
+            <el-col :span='2' ><div class='disinl'>FQ_220501</div></el-col>
+            <el-col :span='3' style='padding-left:60px'>
+              <el-button @click="handleClick(props.row)" type="text" size="small">查看</el-button>
+          <el-button @click="handleUpdate(props.row)" type="text" size="small">编辑</el-button>
+          <el-button @click="handleDle(props.row)" type="text" size="small">删除</el-button>
+          </el-col>
+          </el-row>
         </template>
       </el-table-column>
       <el-table-column
         prop="name"
-        label="单位名称">
+        label="名称">
       </el-table-column>
       <el-table-column
         prop="type"
-        label="单位类型"
+        label="分控中心"
       >
       </el-table-column>
       <el-table-column
         prop="date"
-        label="成立日期"
+        label="设计单位"
       >
       </el-table-column>
       <el-table-column
         prop="user"
-        label="法人代表">
+        label="施工单位">
       </el-table-column>
       <el-table-column
         prop="phone"
-        label="联系电话">
+        label="建设单位">
       </el-table-column>
       <el-table-column
         prop="comname"
-        label="项目名称">
+        label="监理单位">
       </el-table-column>
       <el-table-column
         prop="createDate"
-        label="项目时间">
+        label="运营单位">
       </el-table-column>
       <el-table-column
         prop="complete"
-        label="完成情况">
+        label="分区数量">
+      </el-table-column>
+        <el-table-column
+        prop="complete"
+        label="管廊长度">
+      </el-table-column>
+        <el-table-column
+        prop="complete"
+        label="信息共享码">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -86,7 +90,7 @@
         <template slot-scope="scope">
           <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
           <el-button @click="handleUpdate(scope.row)" type="text" size="small">编辑</el-button>
-          <!--<el-button @click="handleDle(scope.row)" type="text" size="small">删除</el-button>-->
+          <el-button @click="handleDle(scope.row)" type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -219,6 +223,12 @@
       }
     },
     methods: {
+       handleCurrentChange(){
+
+      },
+      handleCurrentChange(){
+
+      },
       handleDownload(){
         this.dialogVisible = true
         this.li = false
@@ -252,10 +262,25 @@
   }
 </script>
 
-<style scoped>
+<style >
   .lr{
     text-align: right;
     line-height: 40px;
     margin-bottom: 20px;
+  }
+  .disinl{
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 50px;
+  }
+  .el-table__expanded-cell{
+    padding-right:0px !important; 
+  }
+  .pl{
+  padding-left: 10px
+  }
+  .pr{
+padding-left: 10px
   }
 </style>

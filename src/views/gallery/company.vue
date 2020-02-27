@@ -1,13 +1,13 @@
 <template>
   <div class="app-container">
-    <el-select v-model="value" placeholder="请选择" v-if="!li" >
+    <!-- <el-select v-model="value" placeholder="请选择">
       <el-option
         v-for="item in options"
         :key="item.value"
         :label="item.label"
         :value="item.value">
       </el-option>
-    </el-select>
+    </el-select> -->
     <el-input v-model="filename" placeholder="单位名称" style="width:300px;" prefix-icon="el-icon-document" />
     <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="document" @click="handleDownload">
       搜索
@@ -20,37 +20,29 @@
       style="width: 100%;">
       <el-table-column
         prop="name"
-        label="单位名称">
+        label="管线单位名称">
       </el-table-column>
       <el-table-column
         prop="type"
-        label="单位类型"
+        label="负责人"
       >
       </el-table-column>
       <el-table-column
         prop="date"
-        label="成立日期"
+        label="负责人联系方式"
       >
       </el-table-column>
       <el-table-column
         prop="user"
-        label="法人代表">
+        label="联络人">
       </el-table-column>
       <el-table-column
         prop="phone"
-        label="联系电话">
+        label="联络人联系方式">
       </el-table-column>
       <el-table-column
         prop="comname"
-        label="项目名称">
-      </el-table-column>
-      <el-table-column
-        prop="createDate"
-        label="项目时间">
-      </el-table-column>
-      <el-table-column
-        prop="complete"
-        label="完成情况">
+        label="加入日期">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -192,6 +184,12 @@
       }
     },
     methods: {
+       handleCurrentChange(){
+
+      },
+      handleCurrentChange(){
+
+      },
       handleDownload(){
         this.dialogVisible = true
         this.li = false

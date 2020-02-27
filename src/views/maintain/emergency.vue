@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-select v-model="value" placeholder="请选择" v-if="!li" >
+    <el-select v-model="value" placeholder="请选择人员类型" v-if="!li" >
       <el-option
         v-for="item in options"
         :key="item.value"
@@ -8,49 +8,57 @@
         :value="item.value">
       </el-option>
     </el-select>
-    <el-input v-model="filename" placeholder="单位名称" style="width:300px;" prefix-icon="el-icon-document" />
+    <el-input v-model="filename" placeholder="人员名字" style="width:300px;" prefix-icon="el-icon-document" />
     <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="document" @click="handleDownload">
       搜索
     </el-button>
-    <!--<el-button :loading="downloadLoading" style="margin-bottom:20px;float: right;" type="primary" icon="el-icon-edit" @click="handleDownload">
+     <el-input v-model="filename" placeholder="设备编码" style="width:300px;" prefix-icon="el-icon-document" />
+    <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="document" @click="handleDownload">
+      搜索
+    </el-button>
+    <el-button :loading="downloadLoading" style="margin-bottom:20px;float: right;" type="primary" icon="el-icon-edit" @click="handleDownload">
       添加
-    </el-button>-->
+    </el-button>
     <el-table
       :data="tableData"
       style="width: 100%;">
       <el-table-column
         prop="name"
-        label="单位名称">
+        label="序号">
       </el-table-column>
       <el-table-column
         prop="type"
-        label="单位类型"
+        label="负责人"
       >
       </el-table-column>
       <el-table-column
         prop="date"
-        label="成立日期"
+        label="协助人员"
       >
       </el-table-column>
       <el-table-column
         prop="user"
-        label="法人代表">
+        label="外协人员">
       </el-table-column>
       <el-table-column
         prop="phone"
-        label="联系电话">
+        label="设备名称">
       </el-table-column>
       <el-table-column
         prop="comname"
-        label="项目名称">
+        label="设备编号">
       </el-table-column>
       <el-table-column
         prop="createDate"
-        label="项目时间">
+        label="设备位置">
       </el-table-column>
       <el-table-column
         prop="complete"
-        label="完成情况">
+        label="确认人">
+      </el-table-column>
+       <el-table-column
+        prop="complete"
+        label="登记时间">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -59,7 +67,7 @@
         <template slot-scope="scope">
           <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
           <el-button @click="handleUpdate(scope.row)" type="text" size="small">编辑</el-button>
-          <!--<el-button @click="handleDle(scope.row)" type="text" size="small">删除</el-button>-->
+          <el-button @click="handleDle(scope.row)" type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -174,24 +182,27 @@
         }],
         options: [{
           value: '选项1',
-          label: '监理单位'
+          label: '负责人'
         }, {
           value: '选项2',
-          label: '建设单位'
+          label: '协助人'
         }, {
           value: '选项3',
-          label: '设计单位'
+          label: '外协人员'
         }, {
           value: '选项4',
-          label: '施工单位'
-        }, {
-          value: '选项5',
-          label: '运维单位'
+          label: '确认人'
         }],
         value: ''
       }
     },
     methods: {
+       handleCurrentChange(){
+
+      },
+      handleCurrentChange(){
+
+      },
       handleDownload(){
         this.dialogVisible = true
         this.li = false

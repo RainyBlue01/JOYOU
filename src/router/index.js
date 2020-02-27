@@ -298,7 +298,7 @@ export const constantRoutes = [
         path: 'keepfit',
         name: 'keepfit',
         component: () => import('@/views/maintain/keepfit'),
-        meta: { title: '排水系统', icon: 'tree' }
+        meta: { title: '廊体保养', icon: 'tree' }
       },
       {
         path: 'equipment',

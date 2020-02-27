@@ -1,14 +1,6 @@
 <template>
   <div class="app-container">
-    <el-select v-model="value" placeholder="请选择" v-if="!li" >
-      <el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-      </el-option>
-    </el-select>
-    <el-input v-model="filename" placeholder="单位名称" style="width:300px;" prefix-icon="el-icon-document" />
+    <el-input v-model="filename" placeholder="负责人" style="width:300px;" prefix-icon="el-icon-document" />
     <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="document" @click="handleDownload">
       搜索
     </el-button>
@@ -20,25 +12,25 @@
       style="width: 100%;">
       <el-table-column
         prop="name"
-        label="单位名称">
+        label="序号">
       </el-table-column>
       <el-table-column
         prop="type"
-        label="单位类型"
+        label="负责人"
       >
       </el-table-column>
       <el-table-column
         prop="date"
-        label="成立日期"
+        label="作业人数"
       >
       </el-table-column>
       <el-table-column
         prop="user"
-        label="法人代表">
+        label="作业性质">
       </el-table-column>
       <el-table-column
         prop="phone"
-        label="联系电话">
+        label="开始时间">
       </el-table-column>
       <el-table-column
         prop="comname"
@@ -46,11 +38,11 @@
       </el-table-column>
       <el-table-column
         prop="createDate"
-        label="项目时间">
+        label="完成时间">
       </el-table-column>
       <el-table-column
         prop="complete"
-        label="完成情况">
+        label="计划工时">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -195,6 +187,12 @@
       handleDownload(){
         this.dialogVisible = true
         this.li = false
+      },
+      handleCurrentChange(){
+
+      },
+      handleCurrentChange(){
+
       },
       handleClick(row){
         this.contentdata=row

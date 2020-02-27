@@ -1,6 +1,22 @@
 <template>
   <div class="app-container">
-    <el-select v-model="value" placeholder="请选择" v-if="!li" >
+    <el-select v-model="value" placeholder="选择管廊"  >
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+      </el-option>
+    </el-select>
+    <el-select v-model="value" placeholder="选择运行状态"  >
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+      </el-option>
+    </el-select>
+    <el-select v-model="value" placeholder="选择子系统"  >
       <el-option
         v-for="item in options"
         :key="item.value"
@@ -12,45 +28,72 @@
     <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="document" @click="handleDownload">
       搜索
     </el-button>
-    <!--<el-button :loading="downloadLoading" style="margin-bottom:20px;float: right;" type="primary" icon="el-icon-edit" @click="handleDownload">
+     <el-button :loading="downloadLoading" style="margin-bottom:20px;float: right;" type="primary" icon="el-icon-upload2" @click="handleDownload">
+      导入
+    </el-button>
+    <el-button :loading="downloadLoading" style="margin-bottom:20px;float: right;" type="primary" icon="el-icon-edit" @click="handleDownload">
       添加
-    </el-button>-->
+    </el-button>
     <el-table
       :data="tableData"
       style="width: 100%;">
       <el-table-column
         prop="name"
-        label="单位名称">
+        label="序号">
       </el-table-column>
       <el-table-column
         prop="type"
-        label="单位类型"
+        label="设备名称"
       >
       </el-table-column>
       <el-table-column
         prop="date"
-        label="成立日期"
+        label="规格"
       >
       </el-table-column>
       <el-table-column
         prop="user"
-        label="法人代表">
+        label="型号">
       </el-table-column>
       <el-table-column
         prop="phone"
-        label="联系电话">
+        label="所属管廊">
       </el-table-column>
       <el-table-column
         prop="comname"
-        label="项目名称">
+        label="所属分区">
       </el-table-column>
       <el-table-column
         prop="createDate"
-        label="项目时间">
+        label="所属仓室">
       </el-table-column>
       <el-table-column
         prop="complete"
-        label="完成情况">
+        label="设备类型">
+      </el-table-column>
+      <el-table-column
+        prop="complete"
+        label="所属系统">
+      </el-table-column>
+      <el-table-column
+        prop="complete"
+        label="巡检标签">
+      </el-table-column>
+      <el-table-column
+        prop="complete"
+        label="生产厂家">
+      </el-table-column>
+      <el-table-column
+        prop="complete"
+        label="生产日期">
+      </el-table-column>
+       <el-table-column
+        prop="complete"
+        label="保质日期">
+      </el-table-column>
+       <el-table-column
+        prop="complete"
+        label="运行状态">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -192,6 +235,12 @@
       }
     },
     methods: {
+       handleCurrentChange(){
+
+      },
+      handleCurrentChange(){
+
+      },
       handleDownload(){
         this.dialogVisible = true
         this.li = false

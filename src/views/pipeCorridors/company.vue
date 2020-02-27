@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-select v-model="value" placeholder="请选择" v-if="!li" >
+    <el-select v-model="value" placeholder="请选择">
       <el-option
         v-for="item in options"
         :key="item.value"
@@ -200,6 +200,12 @@
         this.contentdata=row
         this.dialogVisible = true
         this.li = true
+      },
+       handleCurrentChange(){
+
+      },
+      handleCurrentChange(){
+
       },
       handleUpdate(row){
         this.contentdata=row
